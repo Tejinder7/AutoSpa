@@ -1,0 +1,22 @@
+<div class="content">
+    <div class="card" style="width: 30rem;">
+        <img class="card-img-top" src="assets/signin.jpg" alt="Card image cap" height="220rem">
+        <div class="card-body">
+          <h3 class="card-title">Sign in</h3>
+          <p class="card-text">
+            <form>
+              <div class="mb-3">
+                  <label for="email" class="form-label"><b>Email</b></label>
+                  <input type="text" id="email" placeholder="tony@avengers.com" class="form-control" formControlName="email">
+              </div>
+              <div class="mb-3">
+                  <label for="password" class="form-label"><b>Password</b></label>
+                  <input type="password" id="password" placeholder="Min 6 digits password" class="form-control" formControlName="password">
+              </div>
+              <button type="submit" class="btn btn-outline-primary">Sign in</button>
+            </form>
+            <br>
+            Don't have an account? <a [routerLink]="[]">Register Here</a>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,14 @@
+.btn-outline-primary,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:focus {
+ 
+  border-color: #b8e1ff !important;
+  color: #69bfff;
+}
+
+.btn-outline-primary:hover {
+    
+    background-color: #b8e1ff !important;
+    color: black !important;
+}
