@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "auto-spa-50123"
+  },
+  "targets": {
+    "auto-spa-50123": {
+      "hosting": {
+        "AutoSpa": [
+          "auto-spa-50123"
+        ]
+      }
+    }
+  }
+}

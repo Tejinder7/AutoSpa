@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticateComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    console.log("kol");
+    
+  }
 
   ngOnInit(): void {
   }

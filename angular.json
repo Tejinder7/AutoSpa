@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "AutoSpa:build:production",
+            "firebaseProject": "auto-spa-50123",
+            "firebaseHostingSite": "auto-spa-50123"
+          }
         }
       }
     }
