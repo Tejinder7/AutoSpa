@@ -4,7 +4,7 @@
         <div class="card-body">
           <h3 class="card-title">Sign in</h3>
           <p class="card-text">
-            <form>
+            <form [formGroup]="authForm" (ngSubmit)="registerUser()">
               <div class="mb-3">
                   <label for="email" class="form-label"><b>Email</b></label>
                   <input type="text" id="email" placeholder="tony@avengers.com" class="form-control" formControlName="email">
@@ -19,4 +19,6 @@
             Don't have an account? <a [routerLink]="[]">Register Here</a>
         </div>
       </div>
+      FORM DATA:
+    {{authForm.value | json}}
 </div>
