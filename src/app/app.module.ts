@@ -5,13 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { HomeComponent } from './home/home.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticateComponent
+    AuthenticateComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
