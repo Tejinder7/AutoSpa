@@ -1,60 +1,124 @@
-<div class="container content">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card">
-        <img src="./assets/demo.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Rogers Car Care</h5>
-          <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
-          <p class="card-text">9888574113</p>
-          <div class="row">
-            <button class="btn btn-outline-primary col-md-4">Packages</button> 
-            <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="./assets/demo.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Rogers Car Care</h5>
-          <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
-          <p class="card-text">9888574113</p>
-          <div class="row">
-            <button class="btn btn-outline-primary col-md-4">Packages</button> 
-            <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="./assets/demo.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Rogers Car Care</h5>
-          <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
-          <p class="card-text">9888574113</p>
-          <div class="row">
-            <button class="btn btn-outline-primary col-md-4">Packages</button> 
-            <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="./assets/demo.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Rogers Car Care</h5>
-          <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
-          <p class="card-text">9888574113</p>
-          <div class="row">
-            <button class="btn btn-outline-primary col-md-4">Packages</button> 
-            <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="content" *ngIf="!updateMode">
+  <button class="btn btn-dark" (click)="changeView()">{{text}}</button>
+</div>
+
+<div class="content" *ngIf="addView">
+  <h3>{{text}}</h3>
+  <!-- <h3>Sign In</h3> -->
+  <div class="mb-3">
+      <form [formGroup]="providersForm" (ngSubmit)="addProvidersToFirebase()">
+      
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Name"
+          formControlName="name">
+          <br>
+
+          <label for="phone" class="form-label">Phone:</label>
+          <input type="text" class="form-control" id="phone" placeholder="phone"
+          formControlName="phone">
+          <br>
+
+          <label for="address" class="form-label">Email:</label>
+          <input type="text" class="form-control" id="address" placeholder="Address"
+          formControlName="address">
+          <br>
+
+          <br>
+          <label for="image" class="form-label">Select Image:</label> <br>
+          <input type="file" formControlName="image" accept="image/*" (change)="pickFile($event)">
+          <br>
+          <br>
+          
+          <button type="submit" class="btn btn-dark">Submit</button>
+          
+
+
+      </form>
+  
+      FORM DATA:
+      {{providersForm.value | json}}
+  
   </div>
+</div>
+
+<div class="content" *ngIf="!addView">
+  <div class="container content" *ngFor="let document of providersList">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="{{document.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{document.name}}</h5>
+              <p class="card-text">{{document.address}}</p>
+              <p class="card-text">{{document.phone}}</p>
+              <div class="row">
+                <button class="btn btn-outline-primary col-md-4">Packages</button> 
+                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container content">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="./assets/demo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Rogers Car Care</h5>
+              <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
+              <p class="card-text">9888574113</p>
+              <div class="row">
+                <button class="btn btn-outline-primary col-md-4">Packages</button> 
+                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./assets/demo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Rogers Car Care</h5>
+              <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
+              <p class="card-text">9888574113</p>
+              <div class="row">
+                <button class="btn btn-outline-primary col-md-4">Packages</button> 
+                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./assets/demo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Rogers Car Care</h5>
+              <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
+              <p class="card-text">9888574113</p>
+              <div class="row">
+                <button class="btn btn-outline-primary col-md-4">Packages</button> 
+                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./assets/demo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Rogers Car Care</h5>
+              <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
+              <p class="card-text">9888574113</p>
+              <div class="row">
+                <button class="btn btn-outline-primary col-md-4">Packages</button> 
+                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
