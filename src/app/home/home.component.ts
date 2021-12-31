@@ -23,11 +23,25 @@ export class HomeComponent implements OnInit {
   providersForm = new FormGroup(
     {
       name : new FormControl(''),
+      email : new FormControl(''),
       phone : new FormControl(''),
       address : new FormControl(''),
-      image : new FormControl('')
+      pincode: new FormControl(''),
+      city : new FormControl(''),
+      image : new FormControl(''),
+      
+
     }
   );
+
+  cities = [
+    {cityName: "Select City", state:""},
+    {cityName: "Ludhina", state:"Punjab", pinCode: [141001, 141002, 141005]},
+    {cityName: "Chadigarh", state:"Punjab"},
+    {cityName: "Amritsar", state:"Punjab"},
+    {cityName: "Jalandhar", state:"Punjab"},
+    {cityName: "Phagwara", state:"Punjab"},
+  ];
 
   constructor(private db: DBService, private route: ActivatedRoute) {
     this.fetchProviders();

@@ -1,124 +1,83 @@
 <div class="content" *ngIf="!updateMode">
-  <button class="btn btn-dark" (click)="changeView()">{{text}}</button>
+  <button class="btn btn-outline-primary" (click)="changeView()">{{text}}</button>
 </div>
 
-<div class="content" *ngIf="addView">
-  <h3>{{text}}</h3>
-  <!-- <h3>Sign In</h3> -->
-  <div class="mb-3">
-      <form [formGroup]="providersForm" (ngSubmit)="addProvidersToFirebase()">
-      
-          <label for="name" class="form-label">Name:</label>
-          <input type="text" class="form-control" id="name" placeholder="Name"
-          formControlName="name">
-          <br>
+<div class="content"  *ngIf="addView">
+  <div class="card" style="width: 35rem;">
+      <div class="card-body">
+        <h3 class="card-title">Add Service Provider</h3>
+        <p class="card-text">
+          <form [formGroup]="providersForm" (ngSubmit)="addProvidersToFirebase()">
+            
+            <div class="mb-3">
+              <label for="name" class="form-label">Name:</label>
+              <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+            </div>
+            
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email">
+            </div>
+            
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone:</label>
+              <input type="text" class="form-control" id="phone" placeholder="phone" formControlName="phone">
+            </div>
 
-          <label for="phone" class="form-label">Phone:</label>
-          <input type="text" class="form-control" id="phone" placeholder="phone"
-          formControlName="phone">
-          <br>
+            <div class="mb-3">
+              <label for="address" class="form-label">Address:</label>
+              <input type="text" class="form-control" id="address" placeholder="Address" formControlName="address">
+              </div>
+              
+            <div class="mb-3">
+              <label for="pincode" class="form-label">Pincode:</label>
+              <input type="text" class="form-control" id="pincode" placeholder="Pincode" formControlName="pincode">
+            </div>
 
-          <label for="address" class="form-label">Email:</label>
-          <input type="text" class="form-control" id="address" placeholder="Address"
-          formControlName="address">
-          <br>
+            <div class="mb-3">
+              <select class="form-select" formControlName="city">
+                <!-- <option>Ludhiana</option>
+                <option>Chandigarh</option> -->
+                <option *ngFor="let city of cities">
+                    {{city.cityName}}
+                </option>
+              </select>
+            </div>
 
-          <br>
-          <label for="image" class="form-label">Select Image:</label> <br>
-          <input type="file" formControlName="image" accept="image/*" (change)="pickFile($event)">
-          <br>
-          <br>
-          
-          <button type="submit" class="btn btn-dark">Submit</button>
-          
+            <div class="mb-3">
+              <label for="image" class="form-label">Select Image:</label> <br>
+              <input type="file" formControlName="image" accept="image/*" (change)="pickFile($event)">   
+            </div>
 
-
-      </form>
-  
-      FORM DATA:
-      {{providersForm.value | json}}
-  
+          <button type="submit" class="btn btn-outline-primary">Add</button>
+          </form>
+          FORM DATA:
+          {{providersForm.value | json}}
+      </div>
   </div>
 </div>
 
-<div class="content" *ngIf="!addView">
-  <div class="container content" *ngFor="let document of providersList">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card">
-            <img src="{{document.imageUrl}}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{document.name}}</h5>
-              <p class="card-text">{{document.address}}</p>
-              <p class="card-text">{{document.phone}}</p>
-              <div class="row">
-                <button class="btn btn-outline-primary col-md-4">Packages</button> 
-                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="container content">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card">
-            <img src="./assets/demo.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Rogers Car Care</h5>
-              <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
-              <p class="card-text">9888574113</p>
-              <div class="row">
-                <button class="btn btn-outline-primary col-md-4">Packages</button> 
-                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./assets/demo.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Rogers Car Care</h5>
-              <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
-              <p class="card-text">9888574113</p>
-              <div class="row">
-                <button class="btn btn-outline-primary col-md-4">Packages</button> 
-                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./assets/demo.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Rogers Car Care</h5>
-              <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
-              <p class="card-text">9888574113</p>
-              <div class="row">
-                <button class="btn btn-outline-primary col-md-4">Packages</button> 
-                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./assets/demo.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Rogers Car Care</h5>
-              <p class="card-text">BXX 2332 Krishna Nagar, Ludhiana- 141001</p>
-              <p class="card-text">9888574113</p>
-              <div class="row">
-                <button class="btn btn-outline-primary col-md-4">Packages</button> 
-                <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
+<div>
+  <div class="content" *ngIf="!addView">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col" *ngFor="let document of providersList">
+            <div class="card card_docs">
+              <img src="{{document.imageUrl}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{document.name}}</h5>
+                <p class="card-text"><b>Address: </b>{{document.address}}, {{document.city}}</p>
+                <p class="card-text"><b>Pincode: </b>{{document.pincode}}</p>
+                <p class="card-text"><b>Contact: </b>{{document.phone}}</p>
+                <br>
+                <div class="row">
+                  <button class="btn btn-outline-primary col-md-4">Packages</button> 
+                  <button class="btn btn-outline-primary col-md-4 offset-md-4">Edit Info</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 </div>
